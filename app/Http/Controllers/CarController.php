@@ -122,16 +122,13 @@ class CarController extends Controller
             'thRegistrasi'=> 'required',
             'periodePemakaianKlien' => 'required' ,
             'periodePemilikMobil' => 'required' ,
-//            'sopir' => 'required' ,
-//            'gaji' => 'required' ,
             'hargaPenyewa' => 'required' ,
             'hargaKePemilik' => 'required' ,
-//            'gajiDriver' => 'required' ,
-//            'feePihakKe3' => 'required'
         ]);
         $car->noPolisi= $request->noPolisi;
         $car->namaPemilik= $request->namaPemilik;
         $car->namaPenyewa= $request->namaPenyewa;
+        $car->type = $request->type;
         $car->thnPembuatan= $request->thnPembuatan;
         $car->thRegistrasi= $request->thRegistrasi;
         $car->periodePemakaianKlien= $request->periodePemakaianKlien;

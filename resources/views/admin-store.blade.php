@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -18,6 +23,8 @@
 
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="{{URL::asset('js/js-webshim/minified/polyfiller.js') }}"></script>
 
     <style>
         body{
@@ -210,6 +217,12 @@
         .last {
             margin-right: 30px;
         }
+        /*input::-webkit-outer-spin-button,*/
+        /*input::-webkit-inner-spin-button {*/
+             /*display: none;*/
+            /*-webkit-appearance: none;*/
+            /*margin: 0;*/
+        /*}*/
 
     </style>
 </head>
@@ -220,7 +233,7 @@
     <a href="{{route('cars.create')}}">Tambah Data Mobil</a>
     <a href="{{route('register')}}">Tambah Data Admin</a>
     <a href="{{route('editadmin')}}">Hapus Data Admin</a>
-    {{--<a href="#">Add Admin</a>--}}
+    <a href="#">Add Admin</a>
 </div>
 
 <div id="main">
@@ -261,9 +274,9 @@
                         @csrf
                     </form>
                 </ul>
-                {{--<button type="button" class="btn last  my-2 my-sm-0" data-toggle="modal" data-target="#loginModal">--}}
-                    {{--Login--}}
-                {{--</button>--}}
+                <button type="button" class="btn last  my-2 my-sm-0" data-toggle="modal" data-target="#loginModal">
+                    Login
+                </button>
             </div>
 
 
@@ -301,7 +314,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="thnPembuatan">Tahun Pembuatan Mobil</label>
-                                {{--<input type="text" id="datepicker" />--}}
                                 <input class="form-control" id="datepicker" required name = "thnPembuatan" placeholder="Tahun Pembuatan Mobil" type="text">
                             </div>
                             <div class="form-group">
@@ -317,7 +329,7 @@
                                 <input class="form-control" id="periodePemakaianKlien" required name = "periodePemakaianKlien" placeholder="Periode Pemakaian Klien">
                             </div>
                             <div class="form-group">
-                                <label for="periodePemilikMobil">Nama Pemilik</label>
+                                <label for="periodePemilikMobil">Periode Pemilik Mobil</label>
                                 <input name="periodePemilikMobil" class="form-control" required id="periodePemilikMobil" placeholder="Periode Pemilik Mobil">
                             </div>
                             <div class="form-group">
@@ -326,27 +338,51 @@
                             </div>
                             <div class="form-group">
                                 <label for="gaji">Gaji</label>
-                                <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="hargaPenyewa">Harga Penyewa</label>
-                                <input name="hargaPenyewa" class="form-control" required id="hargaPenyewa" placeholder="Harga ke Penyewa" type="number">
-                            </div>
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input type="number" name="hargaPenyewa" class="form-control money" required id="hargaPenyewa" placeholder="Harga ke Penyewa" >
+                                </div>
+                           </div>
                             <div class="form-group">
                                 <label for="hargaKePemilik">Harga Ke Pemilik</label>
-                                <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="gajiDriver">Gaji Driver</label>
-                                <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="feePihakKe3">Fee Pihak Ke-3</label>
-                                <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
+                                <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp</div>
+                                    </div>
+                                    <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
+                                </div>
                             </div>
 
-
-                            {{--<button type="submit" class="btn btn-primary col-md-2 offset-md-10">Submit</button>--}}
                             <button type="submit" class="btn btn-primary col-md-2 offset-md-10" style="margin-right: 15px" value="update">Tambah Data</button>
                         </form>
             </div>
@@ -354,28 +390,55 @@
                 <h3 class="text-left table-title">Recent Data Stored </h3>
                 <table id="datarent" class="table table-responsive table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
-                    <tr>
-                        <th class = "priority-1" scope="col"> No </th>
-                        <th class = "priority-2" scope="col"> Plat Nomor</th>
-                        <th class = "priority-3" scope="col"> Nama Perusahaan </th>
-                        <th class = "priority-4" scope="col"> Pemilik Kendaraan </th>
-                    </tr>
+                        <tr>
+                            <th> No </th>
+                            <th> No. Polisi</th>
+                            <th> Type </th>
+                            <th> Nama Pemilik</th>
+                            <th> Nama Penyewa</th>
+                            <th> Tahun Pembuatan</th>
+                            <th> Tahun Registrasi</th>
+                            <th> No SPK</th>
+                            <th> Periode Pemakaian Klien</th>
+                            <th> Periode Pemilik Mobil</th>
+                            <th> Sopir</th>
+                            <th> Gaji</th>
+                            <th> Harga Penyewa </th>
+                            <th> Harga KePemilik</th>
+                            <th> Gaji Driver</th>
+                            <th> Fee Pihak Ke-3</th>
+                        </tr>
                     </thead>
                     <tbody>
+
                     @if((collect($cars)->isEmpty()))
 
                     @else
+
                         @foreach($cars as $car)
                             <tr>
-                                <td class = "priority-1"> {{$loop->iteration}}</td>
-                                {{--<td class = "priority-2"> {{$car->platnomor}}</td>--}}
-                                {{--<td class = "priority-3"> {{$car->namaperusahaan}}</td>--}}
-                                {{--<td class = "priority-4"> {{$car->namapemilik}}</td>--}}
+                                <td> {{$loop->iteration}}</td>
+                                <td> {{$car->noPolisi}}</td>
+                                <td> {{$car->type}}</td>
+                                <td> {{$car->namaPemilik}}</td>
+                                <td> {{$car->namaPenyewa}}</td>
+                                <td> {{$car->thnPembuatan}}</td>
+                                <td> {{$car->thRegistrasi}}</td>
+                                <td> {{$car->noSPK}}</td>
+                                <td> {{$car->periodePemakaianKlien}}</td>
+                                <td> {{$car->periodePemilikMobil}}</td>
+                                <td> {{$car->sopir}}</td>
+                                <td> {{$car->gaji}}</td>
+                                <td> {{$car->hargaPenyewa}}</td>
+                                <td> {{$car->hargaKePemilik}}</td>
+                                <td> {{$car->gajiDriver}}</td>
+                                <td> {{$car->feePihakKe3}}</td>
                             </tr>
                         @endforeach
-                    @endif
 
+                    @endif
                     </tbody>
+
                 </table>
 
             </div>
@@ -385,15 +448,10 @@
 
 
 </body>
+{{--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>--}}
 
-{{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--}}
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
@@ -401,29 +459,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
 <script>
-    $("#datarent").DataTable({
-        paging : false,
-        info : false,
-        searching: false,
-        autoWidth: false
+//    $("#datarent").DataTable({
+//        paging : false,
+//        info : false,
+//        searching: false,
+//        autoWidth: false
+//    });
+    $("#datarent").DataTable();
 
-//        overflow-x: hidden;
-
-    //        ,
-//        "aoColumnDefs": [
-//            { "sClass": "my_class", "aTargets": [ 0 ] }
-//        ]
-    });
 </script>
 <script>
     $('#datarent_wrapper').find('div').first().remove();
 
 </script>
-{{--<script>--}}
-    {{--var yourUl = document.getElementsByClassName("table-responsive");--}}
-    {{--yourUl.style.display = yourUl.style.display === 'block' ? '' : 'block';--}}
-
-{{--</script>--}}
 <script>
     $('#datarent_wrapper').children().last().remove();
 </script>
@@ -445,21 +493,30 @@
 
 <script>
     $("#datepicker").datepicker( {
+        autoclose: true,
         format: " yyyy", // Notice the Extra space at the beginning
         viewMode: "years",
         orientation: "auto bottom",
         minViewMode: "years"
     });
     $("#datepicker2").datepicker( {
+        autoclose: true,
         format: " yyyy", // Notice the Extra space at the beginning
         viewMode: "years",
         orientation: "auto bottom",
         minViewMode: "years"
     });
 </script>
+<script>
+    webshims.setOptions('forms-ext', {
+        replaceUI: 'auto',
+        types: 'number',
+        "widgets": {
+            "calculateWidth": false
+        }
+    });
+    webshims.polyfill('forms forms-ext');
 
-
-
+</script>
 </html>
-
 

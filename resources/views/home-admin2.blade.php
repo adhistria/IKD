@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="{{URL::asset('js/js-webshim/minified/polyfiller.js') }}"></script>
     <style>
         body{
             font-family: 'Noto Serif', serif;}
@@ -211,17 +215,68 @@
                     <form action="{{route('cars.choice')}}" method="POST">
                         {{csrf_field()}}
                         <input type="hidden" name="id" id="id">
+
                         <div class="form-group">
-                            <label for="platnomor">Nomor Polisi</label>
-                            <input class="form-control" id="platnomor" name="platnomor" required="" placeholder="Enter Plate Number" maxlength="11" minlength="6">
+                            <label for="noPolisi">Nomor Polisi</label>
+                            <input class="form-control" id="noPolisi" required name = "noPolisi"placeholder="Plat Mobil" maxlength="14" minlength="5">
                         </div>
                         <div class="form-group">
-                            <label for="namapemilik">Nama Pemilik</label>
-                            <input name="namapemilik" class="form-control" required="" id="namapemilik" placeholder="Car Owner">
+                            <label for="type">Tipe Kendaraan</label>
+                            <input class="form-control" id="type" required name = "type" placeholder="Tipe Mobil">
                         </div>
                         <div class="form-group">
-                            <label for="namaperusahaan">Nama Perusahaan</label>
-                            <input name="namaperusahaan" class="form-control" required="" id="namaperusahaan" placeholder="Tenant Companies">
+                            <label for="namaPemilik">Pemilik Kendaraan</label>
+                            <input name="namaPemilik" class="form-control" required id="namaPemilik" placeholder="Pemilik Mobil">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="namaPenyewa">Nama Perusahaan Penyewa</label>
+                            <input name="namaPenyewa" class="form-control" required id="namaPenyewa" placeholder="Perusahaan Penyewa">
+                        </div>
+                        <div class="form-group">
+                            <label for="thnPembuatan">Tahun Pembuatan Mobil</label>
+                            {{--<input type="text" id="datepicker" />--}}
+                            <input class="form-control" id="thnPembuatan" required name = "thnPembuatan" placeholder="Tahun Pembuatan Mobil" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="thRegistrasi">Tahun Registrasi Mobil</label>
+                            <input class="form-control" id="thRegistrasi" name="thRegistrasi"  required placeholder="Tahun Registrasi Mobil" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="noSPK">No SPK</label>
+                            <input name="noSPK" class="form-control" id="noSPK" placeholder="No SPK">
+                        </div>
+                        <div class="form-group">
+                            <label for="periodePemakaianKlien">Periode Pemakaian Klien</label>
+                            <input class="form-control" id="periodePemakaianKlien" required name = "periodePemakaianKlien" placeholder="Periode Pemakaian Klien">
+                        </div>
+                        <div class="form-group">
+                            <label for="periodePemilikMobil">Nama Pemilik</label>
+                            <input name="periodePemilikMobil" class="form-control" required id="periodePemilikMobil" placeholder="Periode Pemilik Mobil">
+                        </div>
+                        <div class="form-group">
+                            <label for="sopir">Sopir </label>
+                            <input name="sopir" class="form-control" required id="sopir" placeholder="Sopir Mobil">
+                        </div>
+                        <div class="form-group">
+                            <label for="gaji">Gaji</label>
+                            <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="hargaPenyewa">Harga Penyewa</label>
+                            <input name="hargaPenyewa" class="form-control" required id="hargaPenyewa" placeholder="Harga ke Penyewa" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="hargaKePemilik">Harga Ke Pemilik</label>
+                            <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="gajiDriver">Gaji Driver</label>
+                            <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="feePihakKe3">Fee Pihak Ke-3</label>
+                            <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
                         </div>
                         <div class="row">
                             <div class="col-2 mr-auto">
@@ -251,10 +306,22 @@
             <table id="datarent" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th class = "priority-1" scope="col"> No </th>
-                    <th class = "priority-2" scope="col"> Plat Nomor</th>
-                    <th class = "priority-3" scope="col"> Nama Perusahaan </th>
-                    <th class = "priority-4" scope="col"> Pemilik Kendaraan </th>
+                    <th> No </th>
+                    <th> No. Polisi</th>
+                    <th> Type</th>
+                    <th> Nama Pemilik</th>
+                    <th> Nama Penyewa</th>
+                    <th> Tahun Pembuatan</th>
+                    <th> Tahun Registrasi</th>
+                    <th> No SPK</th>
+                    <th> Periode Pemakaian Klien</th>
+                    <th> Periode Pemilik Mobil</th>
+                    <th> Sopir</th>
+                    <th> Gaji</th>
+                    <th> Harga Penyewa </th>
+                    <th> Harga KePemilik</th>
+                    <th> Gaji Driver</th>
+                    <th> Fee Pihak Ke-3</th>
                 </tr>
                 </thead>
                 @if(empty($cars))
@@ -262,11 +329,24 @@
                 @else
                     <tbody>
                         @foreach($cars as $car)
-                        <tr data-toggle="modal" data-id="{{$car->id}}" data-target="#orderModal" data-backdrop="static" data-keyboard="false">
-                            <td class = "priority-1"> {{$loop->iteration}}</td>
-                            <td class = "priority-2"> {{$car->platnomor}}</td>
-                            <td class = "priority-3"> {{$car->namaperusahaan}}</td>
-                            <td class = "priority-4"> {{$car->namapemilik}}</td>
+                        {{--<tr data-toggle="modal" data-id="{{$car->id}}" data-target="#orderModal" data-backdrop="static" data-keyboard="false">--}}
+                        <tr data-toggle="modal" data-id="{{$car->id}}" data-backdrop="static" data-keyboard="false">
+                            <td> {{$loop->iteration}}</td>
+                            <td class="priority-1"> {{$car->noPolisi}}</td>
+                            <td class="priority-2"> {{$car->type}}</td>
+                            <td class="priority-3"> {{$car->namaPemilik}}</td>
+                            <td class="priority-4"> {{$car->namaPenyewa}}</td>
+                            <td class="priority-5"> {{$car->thnPembuatan}}</td>
+                            <td class="priority-6"> {{$car->thRegistrasi}}</td>
+                            <td class="priority-7"> {{$car->noSPK}}</td>
+                            <td class="priority-8"> {{$car->periodePemakaianKlien}}</td>
+                            <td class="priority-9"> {{$car->periodePemilikMobil}}</td>
+                            <td class="priority-10"> {{$car->sopir}}</td>
+                            <td class="priority-11"> {{$car->gaji}}</td>
+                            <td class="priority-12"> {{$car->hargaPenyewa}}</td>
+                            <td class="priority-13"> {{$car->hargaKePemilik}}</td>
+                            <td class="priority-14"> {{$car->gajiDriver}}</td>
+                            <td class="priority-15"> {{$car->feePihakKe3}}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -278,14 +358,15 @@
 
 
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
 {{--<script>--}}
     {{--$('#orderModal').modal({--}}
         {{--backdrop: 'static',--}}
@@ -293,22 +374,112 @@
     {{--})--}}
 {{--</script>--}}
 <script>
-    $('tr').not('thead tr').addClass('selected').click(function() {
-        var $row = $(this).closest('tr');
-        var rowID = $row.attr('data-id');
-        console.log(rowID);
-        var name = $row.find('.priority-2').text();
-        var namapemilik = $row.find('.priority-3').text();
-        var namaperusahaan = $row.find('.priority-4').text();
-        $('#modaltitle').val("Data ");
-        $('#id').val(rowID);
-        $('#platnomor').val(name);
-        $('#namapemilik').val(namapemilik);
-        $('#namaperusahaan').val(namaperusahaan);
-        $('#orderModal').modal('show');
+    $('table').on('click','tbody tr', function (evt) {
+        var $cell=$(evt.target).closest('td');
+        if($cell.index() > 0){
+            var $row = $(this).closest('tr');
+            var rowID = $row.attr('data-id');
+            console.log('rowId');
+            console.log(rowID);
+            var nopol = $row.find('.priority-1').text();
+            var type = $row.find('.priority-2').text();
+            var namaPemilik = $row.find('.priority-3').text();
+            var namaPenyewa = $row.find('.priority-4').text();
+            var thnPembuatan = $row.find('.priority-5').text();
+            var thRegistrasi = $row.find('.priority-6').text();
+            var noSPK = $row.find('.priority-7').text();
+            var periodePemakaianKlien = $row.find('.priority-8').text();
+            var periodePemilikMobil= $row.find('.priority-9').text();
+            var sopir = $row.find('.priority-10').text();
+            var gaji = parseInt($row.find('.priority-11').text()) ;
+            var hargaPenyewa = parseInt($row.find('.priority-12').text()) ;
+            var hargaKePemilik = parseInt($row.find('.priority-13').text());
+            var gajiDriver = parseInt($row.find('.priority-14').text());
+            var feePihakKe3 = parseInt($row.find('.priority-15').text());
+            console.log(feePihakKe3);
+            $('#modaltitle').val("Data ");
+            $('#id').val(rowID);
+            $('#noPolisi').val(nopol);
+            $('#type').val(type);
+            $('#namaPemilik').val(namaPemilik);
+            $('#namaPenyewa').val(namaPenyewa);
+            $('#thnPembuatan').val(thnPembuatan);
+            $('#thRegistrasi').val(thRegistrasi);
+            $('#noSPK').val(noSPK);
+            $('#periodePemakaianKlien').val(periodePemakaianKlien);
+            $('#periodePemilikMobil').val(periodePemilikMobil);
+            $('#sopir').val(sopir);
+            $('#gaji').val(gaji);
+            $('#hargaPenyewa').val(hargaPenyewa);
+            $('#hargaKePemilik').val(hargaKePemilik);
+            $('#gajiDriver').val(gajiDriver);
+            $("#feePihakKe3").val(feePihakKe3);
+            $('#orderModal').modal('show');
+
+        }
+
+
     });
+</script>
 
 
+
+{{--<script>--}}
+    {{--$('tr').not('thead tr ').addClass('selected').click(function() {--}}
+        {{--var $row = $(this).closest('tr');--}}
+        {{--var rowID = $row.attr('data-id');--}}
+        {{--console.log(rowID);--}}
+        {{--var nopol = $row.find('.priority-1').text();--}}
+        {{--var type = $row.find('.priority-2').text();--}}
+        {{--var namaPemilik = $row.find('.priority-3').text();--}}
+        {{--var namaPenyewa = $row.find('.priority-4').text();--}}
+        {{--var thnPembuatan = $row.find('.priority-5').text();--}}
+        {{--var thRegistrasi = $row.find('.priority-6').text();--}}
+        {{--var noSPK = $row.find('.priority-7').text();--}}
+        {{--var periodePemakaianKlien = $row.find('.priority-8').text();--}}
+        {{--var periodePemilikMobil= $row.find('.priority-9').text();--}}
+        {{--var sopir = $row.find('.priority-10').text();--}}
+        {{--var gaji = parseInt($row.find('.priority-11').text()) ;--}}
+        {{--var hargaPenyewa = parseInt($row.find('.priority-12').text()) ;--}}
+        {{--var hargaKePemilik = parseInt($row.find('.priority-13').text());--}}
+        {{--var gajiDriver = parseInt($row.find('.priority-14').text());--}}
+        {{--var feePihakKe3 = parseInt($row.find('.priority-15').text());--}}
+        {{--console.log(feePihakKe3);--}}
+        {{--$('#modaltitle').val("Data ");--}}
+        {{--$('#id').val(rowID);--}}
+        {{--$('#noPolisi').val(nopol);--}}
+        {{--$('#type').val(type);--}}
+        {{--$('#namaPemilik').val(namaPemilik);--}}
+        {{--$('#namaPenyewa').val(namaPenyewa);--}}
+        {{--$('#thnPembuatan').val(thnPembuatan);--}}
+        {{--$('#thRegistrasi').val(thRegistrasi);--}}
+        {{--$('#noSPK').val(noSPK);--}}
+        {{--$('#periodePemakaianKlien').val(periodePemakaianKlien);--}}
+        {{--$('#periodePemilikMobil').val(periodePemilikMobil);--}}
+        {{--$('#sopir').val(sopir);--}}
+        {{--$('#gaji').val(gaji);--}}
+        {{--$('#hargaPenyewa').val(hargaPenyewa);--}}
+        {{--$('#hargaKePemilik').val(hargaKePemilik);--}}
+        {{--$('#gajiDriver').val(gajiDriver);--}}
+        {{--$("#feePihakKe3").val(feePihakKe3);--}}
+        {{--$('#orderModal').modal('show');--}}
+    {{--});--}}
+{{--</script>--}}
+<script>
+    $("#thnPembuatan").datepicker( {
+        autoclose: true,
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years",
+        orientation: "auto bottom",
+        minViewMode: "years"
+    });
+    $("#thRegistrasi").datepicker( {
+        autoclose: true,
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years",
+        orientation: "auto bottom",
+        minViewMode: "years"
+    });
 </script>
 <script>
     $("#datarent").DataTable();
@@ -326,7 +497,16 @@
         document.body.style.backgroundColor = "white";
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    webshims.setOptions('forms-ext', {
+        replaceUI: 'auto',
+        types: 'number',
+        "widgets": {
+            "calculateWidth": false
+        }
+
+    });
+    webshims.polyfill('forms forms-ext');
+
+</script>
 </html>
