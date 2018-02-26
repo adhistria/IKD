@@ -64,6 +64,7 @@ class CarController extends Controller
         $car->noPolisi= $request->noPolisi;
         $car->namaPemilik= $request->namaPemilik;
         $car->namaPenyewa= $request->namaPenyewa;
+        $car->type = $request->type;
         $car->thnPembuatan= $request->thnPembuatan;
         $car->thRegistrasi= $request->thRegistrasi;
         $car->periodePemakaianKlien= $request->periodePemakaianKlien;

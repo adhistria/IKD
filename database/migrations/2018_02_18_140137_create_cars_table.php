@@ -15,20 +15,21 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('noPolisi');
-            $table->string('namaPemilik');
-            $table->string('namaPenyewa');
-            $table->string('thnPembuatan');
-            $table->string('thRegistrasi');
-            $table->string('noSPK');
-            $table->string('periodePemakaianKlien');
-            $table->string('periodePemilikMobil');
-            $table->string('sopir');
-            $table->integer('gaji');
+            $table->string('noPolisi',20);
+            $table->string('type',20);
+            $table->string('namaPemilik',40);
+            $table->string('namaPenyewa',50);
+            $table->string('thnPembuatan',4);
+            $table->string('thRegistrasi',4);
+            $table->string('noSPK')->nullable();
+            $table->string('periodePemakaianKlien',50);
+            $table->string('periodePemilikMobil',50);
+            $table->string('sopir')->nullable();
+            $table->integer('gaji')->nullable();
             $table->integer('hargaPenyewa');
             $table->integer('hargaKePemilik');
-            $table->integer('gajiDriver');
-            $table->integer('feePihakKe3');
+            $table->integer('gajiDriver')->nullable();
+            $table->integer('feePihakKe3')->nullable();
             $table->timestamps();
         });
     }

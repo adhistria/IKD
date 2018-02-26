@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css">
 
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
     <style>
         body{
             font-family: 'Noto Serif', serif;}
@@ -208,6 +210,7 @@
         .last {
             margin-right: 30px;
         }
+
     </style>
 </head>
 <body>
@@ -272,10 +275,7 @@
                 <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
             @endif
         @endforeach
-    </div> <!-- end .flash-message -->
-    {{--<div class="alert alert-primary" role="alert">--}}
-        {{--This is a primary alert—check it out!--}}
-    {{--</div>--}}
+    </div>
     <div id="recentdata" class="container-fluid store">
         <div class="row">
             <div id= "forminput" class="col-md-8 store-data">
@@ -284,20 +284,70 @@
                             {{csrf_field()}}
 
                             <div class="form-group">
-                                <label for="platnomor">Nomor Polisi</label>
-                                <input class="form-control" id="platnomor" required="" name = "platnomor"placeholder="Enter Plate Number" maxlength="11" minlength="6">
+                                <label for="noPolisi">Nomor Polisi</label>
+                                <input class="form-control" id="noPolisi" required name = "noPolisi"placeholder="Plat Mobil" maxlength="14" minlength="5">
                             </div>
                             <div class="form-group">
-                                <label for="namapemilik">Nama Pemilik</label>
-                                <input name="namapemilik" class="form-control" required=""id="namapemilik" placeholder="Car Owner">
+                                <label for="type">Tipe Kendaraan</label>
+                                <input class="form-control" id="type" required name = "type" placeholder="Tipe Mobil">
                             </div>
                             <div class="form-group">
-                                <label for="namaperusahaan">Nama Perusahaan</label>
-                                <input name="namaperusahaan" class="form-control" required=""id="namaperusahaan" placeholder="Tenant Companies">
+                                <label for="namaPemilik">Pemilik Kendaraan</label>
+                                <input name="namaPemilik" class="form-control" required id="namaPemilik" placeholder="Pemilik Mobil">
+                            </div>
+                            <div class="form-group">
+                                <label for="namaPenyewa">Nama Perusahaan Penyewa</label>
+                                <input name="namaPenyewa" class="form-control" required id="namaPenyewa" placeholder="Perusahaan Penyewa">
+                            </div>
+                            <div class="form-group">
+                                <label for="thnPembuatan">Tahun Pembuatan Mobil</label>
+                                {{--<input type="text" id="datepicker" />--}}
+                                <input class="form-control" id="datepicker" required name = "thnPembuatan" placeholder="Tahun Pembuatan Mobil" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="thRegistrasi">Tahun Registrasi Mobil</label>
+                                <input class="form-control" id="datepicker2" name="thRegistrasi"  required placeholder="Tahun Registrasi Mobil" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="noSPK">No SPK</label>
+                                <input name="noSPK" class="form-control" id="noSPK" placeholder="No SPK">
+                            </div>
+                            <div class="form-group">
+                                <label for="periodePemakaianKlien">Periode Pemakaian Klien</label>
+                                <input class="form-control" id="periodePemakaianKlien" required name = "periodePemakaianKlien" placeholder="Periode Pemakaian Klien">
+                            </div>
+                            <div class="form-group">
+                                <label for="periodePemilikMobil">Nama Pemilik</label>
+                                <input name="periodePemilikMobil" class="form-control" required id="periodePemilikMobil" placeholder="Periode Pemilik Mobil">
+                            </div>
+                            <div class="form-group">
+                                <label for="sopir">Sopir </label>
+                                <input name="sopir" class="form-control" required id="sopir" placeholder="Sopir Mobil">
+                            </div>
+                            <div class="form-group">
+                                <label for="gaji">Gaji</label>
+                                <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="hargaPenyewa">Harga Penyewa</label>
+                                <input name="hargaPenyewa" class="form-control" required id="hargaPenyewa" placeholder="Harga ke Penyewa" type="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="hargaKePemilik">Harga Ke Pemilik</label>
+                                <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="gajiDriver">Gaji Driver</label>
+                                <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                            </div>
+                            <div class="form-group">
+                                <label for="feePihakKe3">Fee Pihak Ke-3</label>
+                                <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
                             </div>
 
+
                             {{--<button type="submit" class="btn btn-primary col-md-2 offset-md-10">Submit</button>--}}
-                            <button type="submit" name="update" class="btn btn-primary col-md-2 offset-md-10" style="margin-right: 15px" value="update">Store</button>
+                            <button type="submit" class="btn btn-primary col-md-2 offset-md-10" style="margin-right: 15px" value="update">Tambah Data</button>
                         </form>
             </div>
             <div class="col-md-4 recent-data">
@@ -318,9 +368,9 @@
                         @foreach($cars as $car)
                             <tr>
                                 <td class = "priority-1"> {{$loop->iteration}}</td>
-                                <td class = "priority-2"> {{$car->platnomor}}</td>
-                                <td class = "priority-3"> {{$car->namaperusahaan}}</td>
-                                <td class = "priority-4"> {{$car->namapemilik}}</td>
+                                {{--<td class = "priority-2"> {{$car->platnomor}}</td>--}}
+                                {{--<td class = "priority-3"> {{$car->namaperusahaan}}</td>--}}
+                                {{--<td class = "priority-4"> {{$car->namapemilik}}</td>--}}
                             </tr>
                         @endforeach
                     @endif
@@ -348,6 +398,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
 <script>
     $("#datarent").DataTable({
@@ -392,6 +443,20 @@
 
 </script>
 
+<script>
+    $("#datepicker").datepicker( {
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years",
+        orientation: "auto bottom",
+        minViewMode: "years"
+    });
+    $("#datepicker2").datepicker( {
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years",
+        orientation: "auto bottom",
+        minViewMode: "years"
+    });
+</script>
 
 
 
