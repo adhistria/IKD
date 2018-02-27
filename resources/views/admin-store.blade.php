@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--}}
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -223,7 +222,9 @@
             /*-webkit-appearance: none;*/
             /*margin: 0;*/
         /*}*/
-
+        .table-responsive{
+            display : table;
+        }
     </style>
 </head>
 <body>
@@ -334,7 +335,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sopir">Sopir </label>
-                                <input name="sopir" class="form-control" required id="sopir" placeholder="Sopir Mobil">
+                                <input name="sopir" class="form-control" id="sopir" placeholder="Sopir Mobil">
                             </div>
                             <div class="form-group">
                                 <label for="gaji">Gaji</label>
@@ -342,7 +343,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Rp</div>
                                     </div>
-                                    <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                                    <input class="form-control" id="gaji" name = "gaji" placeholder="Gaji" type="number">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -386,14 +387,14 @@
                             <button type="submit" class="btn btn-primary col-md-2 offset-md-10" style="margin-right: 15px" value="update">Tambah Data</button>
                         </form>
             </div>
-            <div class="col-md-4 recent-data">
-                <h3 class="text-left table-title">Recent Data Stored </h3>
+            <div class="col-md-4 recent-data dataTables_wrapper " style="overflow-x:auto;">
+                <h3 class="text-left table-title ">Recent Data Stored </h3>
                 <table id="datarent" class="table table-responsive table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th> No </th>
                             <th> No. Polisi</th>
-                            <th> Type </th>
+                            <th> Type Kendaraan</th>
                             <th> Nama Pemilik</th>
                             <th> Nama Penyewa</th>
                             <th> Tahun Pembuatan</th>
@@ -449,7 +450,9 @@
 
 </body>
 {{--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>--}}
-
+{{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>--}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -459,12 +462,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
 <script>
-//    $("#datarent").DataTable({
-//        paging : false,
-//        info : false,
-//        searching: false,
-//        autoWidth: false
-//    });
     $("#datarent").DataTable();
 
 </script>
@@ -480,6 +477,7 @@
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("datarent").style.display= "block";
         document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
 

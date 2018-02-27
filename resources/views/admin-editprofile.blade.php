@@ -289,7 +289,7 @@
                         <label for="username" class="col-md-3 col-form-label text-md-right">Username</label>
 
                         <div class="col-md-8">
-                            <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ $user->username}}" required>
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ $user->username}}" required>
 
                             @if ($errors->has('username'))
                                 <span class="invalid-feedback">

@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css">
 
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+    {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
+    {{--<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">--}}
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+    {{--<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">--}}
+    {{--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">--}}
+        {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">--}}
+        {{--<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap4.min.css">--}}
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 
     <script type="text/javascript" src="{{URL::asset('js/js-webshim/minified/polyfiller.js') }}"></script>
@@ -144,6 +154,9 @@
         .flash-message{
             padding-top: 10px;
         }
+        .table-responsive{
+            display : table;
+        }
     </style>
 </head>
 <body>
@@ -260,23 +273,49 @@
                         </div>
                         <div class="form-group">
                             <label for="gaji">Gaji</label>
-                            <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input class="form-control" id="gaji" required name = "gaji" placeholder="Gaji" type="number">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="hargaPenyewa">Harga Penyewa</label>
-                            <input name="hargaPenyewa" class="form-control" required id="hargaPenyewa" placeholder="Harga ke Penyewa" type="number">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input type="number" name="hargaPenyewa" class="form-control money" required id="hargaPenyewa" placeholder="Harga ke Penyewa" >
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="hargaKePemilik">Harga Ke Pemilik</label>
-                            <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input name="hargaKePemilik" class="form-control" required id="hargaKePemilik" placeholder="Harga Ke Pemilik" type="number">
+                            </div>
+
                         </div>
                         <div class="form-group">
                             <label for="gajiDriver">Gaji Driver</label>
-                            <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input name="gajiDriver" class="form-control" required id="gajiDriver" placeholder="Gaji Driver" type="number">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="feePihakKe3">Fee Pihak Ke-3</label>
-                            <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp</div>
+                                </div>
+                                <input name="feePihakKe3" class="form-control" required id="feePihakKe3" placeholder="Fee Untuk Pihak Ke-3" type="number">
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-2 mr-auto">
@@ -300,10 +339,10 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid listdata">
+    <div class="container-fluid listdata ">
         <h5 class="text-center">List of Vehicle Rental</h5>
-        <div id="dataRental" class="dataTables_wrapper" style="overflow-x:auto;">
-            <table id="datarent" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <div id="dataRental" class="dataTables_wrapper " style="overflow-x:auto;">
+            <table id="datarent" class="table table-responsive dt-responsive table-striped table-bordered nowrap" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th> No </th>
@@ -359,6 +398,7 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -367,12 +407,7 @@
 <script src="https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
-{{--<script>--}}
-    {{--$('#orderModal').modal({--}}
-        {{--backdrop: 'static',--}}
-        {{--keyboard: false--}}
-    {{--})--}}
-{{--</script>--}}
+
 <script>
     $('table').on('click','tbody tr', function (evt) {
         var $cell=$(evt.target).closest('td');
@@ -415,56 +450,11 @@
             $('#gajiDriver').val(gajiDriver);
             $("#feePihakKe3").val(feePihakKe3);
             $('#orderModal').modal('show');
-
         }
 
 
     });
 </script>
-
-
-
-{{--<script>--}}
-    {{--$('tr').not('thead tr ').addClass('selected').click(function() {--}}
-        {{--var $row = $(this).closest('tr');--}}
-        {{--var rowID = $row.attr('data-id');--}}
-        {{--console.log(rowID);--}}
-        {{--var nopol = $row.find('.priority-1').text();--}}
-        {{--var type = $row.find('.priority-2').text();--}}
-        {{--var namaPemilik = $row.find('.priority-3').text();--}}
-        {{--var namaPenyewa = $row.find('.priority-4').text();--}}
-        {{--var thnPembuatan = $row.find('.priority-5').text();--}}
-        {{--var thRegistrasi = $row.find('.priority-6').text();--}}
-        {{--var noSPK = $row.find('.priority-7').text();--}}
-        {{--var periodePemakaianKlien = $row.find('.priority-8').text();--}}
-        {{--var periodePemilikMobil= $row.find('.priority-9').text();--}}
-        {{--var sopir = $row.find('.priority-10').text();--}}
-        {{--var gaji = parseInt($row.find('.priority-11').text()) ;--}}
-        {{--var hargaPenyewa = parseInt($row.find('.priority-12').text()) ;--}}
-        {{--var hargaKePemilik = parseInt($row.find('.priority-13').text());--}}
-        {{--var gajiDriver = parseInt($row.find('.priority-14').text());--}}
-        {{--var feePihakKe3 = parseInt($row.find('.priority-15').text());--}}
-        {{--console.log(feePihakKe3);--}}
-        {{--$('#modaltitle').val("Data ");--}}
-        {{--$('#id').val(rowID);--}}
-        {{--$('#noPolisi').val(nopol);--}}
-        {{--$('#type').val(type);--}}
-        {{--$('#namaPemilik').val(namaPemilik);--}}
-        {{--$('#namaPenyewa').val(namaPenyewa);--}}
-        {{--$('#thnPembuatan').val(thnPembuatan);--}}
-        {{--$('#thRegistrasi').val(thRegistrasi);--}}
-        {{--$('#noSPK').val(noSPK);--}}
-        {{--$('#periodePemakaianKlien').val(periodePemakaianKlien);--}}
-        {{--$('#periodePemilikMobil').val(periodePemilikMobil);--}}
-        {{--$('#sopir').val(sopir);--}}
-        {{--$('#gaji').val(gaji);--}}
-        {{--$('#hargaPenyewa').val(hargaPenyewa);--}}
-        {{--$('#hargaKePemilik').val(hargaKePemilik);--}}
-        {{--$('#gajiDriver').val(gajiDriver);--}}
-        {{--$("#feePihakKe3").val(feePihakKe3);--}}
-        {{--$('#orderModal').modal('show');--}}
-    {{--});--}}
-{{--</script>--}}
 <script>
     $("#thnPembuatan").datepicker( {
         autoclose: true,
@@ -482,12 +472,15 @@
     });
 </script>
 <script>
-    $("#datarent").DataTable();
+    $("#datarent").DataTable({
+        responsive : true
+    });
 </script>
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("datarent").style.display= "block";
         document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
 
