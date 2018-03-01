@@ -18,21 +18,13 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-//            return redirect('/home');
             return redirect()->route('cars.index');
         }
         if (Auth::check()) {
             return redirect()->route('welcome');
         }
-        return $next($request);
-//        if ($this->Auth->check()) {
-//            return redirect('/admin');
-//        }
-//        if ($this->auth->check())
-//        {
-//            return new RedirectResponse(url('/dashboard'));
-//        }
 
+        return $next($request);
 
     }
 }

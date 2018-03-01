@@ -28,8 +28,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-//    protected $redirectTo = 'cars';
-
     /**
      * Create a new controller instance.
      *
@@ -43,27 +41,18 @@ class LoginController extends Controller
     {
         $username = $request->username;
         $password=$request->password;
-//        $modal = 'loginModal';
-
         if(filter_var($username, FILTER_VALIDATE_EMAIL)) {
             Auth::attempt(['email' => $username, 'password' => $password]);
         } else {
             Auth::attempt(['username' => $username, 'password' => $password]);
         }
         if ( Auth::check() ) {
+//            return 1;
             return redirect()->route('cars.index');
         }
         return redirect()->back()->withErrors([
             'credentials' => 'Username atau Password Salah'
-//            'error_code' => 5,
-//            'modal' => 'loginModal'
         ]);
-//        $modal = 'loginModal';
-//        $cars = Car::all();
-
-//        return view('home-admin2')->with('cars',$cars);
-//        return view('welcome')->with(['cars'=>$cars,'modal'=>$modal]);
-//        return view('welcome')->with(compact('modal'));
     }
     protected function redirectTo()
     {

@@ -1,0 +1,187 @@
+/*@media screen and (max-width: 565px) and (min-width: 300px) {*/
+    /*.navbar-brand{*/
+        /*font-size: 3.5em;*/
+    /*}*/
+    /*.btn{*/
+        /*padding: 0;*/
+    /*}*/
+    /*#navigatorbar{*/
+        /*font-size: 0.3em;*/
+    /*}*/
+    /*.text-center{*/
+        /*font-size: 3em;*/
+    /*}*/
+    /*.table{*/
+        /*font-size: 2em;*/
+    /*}*/
+    /*i.fa{*/
+        /*font-size: 0.3em;*/
+    /*}*/
+    /*.btn{*/
+        /*font-size: 2em;*/
+    /*}*/
+    /*#dataRental{*/
+        /*font-size: 0.3em;*/
+    /*}*/
+    /*#maps{*/
+        /*font-size: 0.3em;*/
+    /*}*/
+    /*#datarent_length{*/
+        /*display: none;*/
+    /*}*/
+    /*.dataTables_filter input {*/
+        /*width: 10%;*/
+        /*height: 20px;*/
+        /*font-size: 2.5em;*/
+    /*}*/
+    /*.dataTables_filter {*/
+        /*text-align: center;*/
+    /*}*/
+    /*table.dataTable>tbody>tr.child span.dtr-title{*/
+        /*min-width: 1rem;*/
+        /*display: inline-block;*/
+    /*}*/
+
+/*}*/
+
+.nav-link {
+    padding-right: 20px ;
+    color: black;
+}
+#navigatorbar {
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    background-color: #f4f4f4;
+    z-index:999;
+    position:relative;
+}
+
+.last {
+    margin-right: 30px;
+}
+body{
+    font-family: 'Noto Serif', serif;}
+#dataRental{
+    background-color: white;
+    /*padding-top: 20px;*/
+    padding-bottom: 2em;
+    margin : 0px;
+    bottom: 0;
+}
+.imgcontainer{
+    line-height: 1.5;
+    margin: auto;
+    letter-spacing: 4px;
+    display: block;
+    position:relative;
+    max-width:980px;
+    width: auto;
+    height: auto;
+}
+.imgikd{
+    max-width:100%;
+    height:auto;
+    vertical-align:middle;
+}
+.mapsikd{
+    padding-top: 2em;
+}
+#maps{
+    background-color: #f4f4f4;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: black;
+}
+.btnlgn{
+    background-color: transparent;
+}
+.failedlLogin{
+    color: red;
+}
+table.dataTable>tbody>tr.child span.dtr-title{
+    display: inline-block;
+    min-width: 13rem;
+    font-weight: 900;
+    font-family: 'Noto Serif Bold', serif;
+}
+i {
+    padding: 0.5em;
+}
+li{
+    padding: 0.5em;
+}
+ul {
+    list-style-type: none;
+}
+.contact{
+    padding-bottom: 2em;
+}
+#googleMap{
+    color: white;
+}
+i.fa{
+    font-size: 20px;
+}
+.dftarmobil{
+    padding-top: 2em;
+}
+footer{
+    background-color: black;
+    color: white;
+}
+p{
+    margin-bottom: 0;
+}
+@media screen and (max-width: 565px) and (min-width: 300px) {
+    .navbar-brand{
+        font-size: 3.5em;
+    }
+    .btn{
+        padding: 0;
+    }
+    #navigatorbar{
+        font-size: 0.3em;
+    }
+    .text-center{
+        font-size: 3em;
+    }
+    .table{
+        font-size: 2em;
+    }
+    i.fa{
+        font-size: 2em;
+    }
+    .btn{
+        font-size: 2em;
+    }
+    #dataRental{
+        font-size: 0.3em;
+    }
+    #maps{
+        font-size: 0.3em;
+    }
+    #datarent_length{
+        display: none;
+    }
+    .dataTables_filter input {
+        width: 10%;
+        height: 20px;
+        font-size: 2.5em;
+    }
+    .dataTables_filter {
+        text-align: center;
+    }
+    table.dataTable>tbody>tr.child span.dtr-title{
+        min-width: 1rem;
+        display: inline-block;
+    }
+    p{
+        font-size: 0.1em;
+    }
+    .modal{
+        font-size: 0.5em;
+    }
+    label{
+        font-size: 1.5em;
+    }
+
+}

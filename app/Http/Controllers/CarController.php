@@ -73,9 +73,14 @@ class CarController extends Controller
         $car->sopir= $request->sopir;
         $car->gaji= $request->gaji;
         $car->hargaPenyewa= $request->hargaPenyewa;
+        $car->ppn = $request->hargaPenyewa *0.1;
+        $car->pph = $car->ppn*0.2;
+        $car->totalHargaPenyewa = $request->hargaPenyewa + $car->ppn - $car->pph ;
         $car->hargaKePemilik= $request->hargaKePemilik;
+        $car->pphPemilik = $request->hargaKePemilik*0.02;
         $car->gajiDriver= $request->gajiDriver;
         $car->feePihakKe3= $request->feePihakKe3;
+        $car->feeManajemen= $car->totalHargaPenyewa - $car->hargaKePemilik - $car->gajiDriver - $car->ppn - $car->feePihakKe3;
         $car->save();
         $request->session()->flash('alert-success', 'Car was successful added!');
         return redirect()->route("cars.create");
@@ -137,10 +142,14 @@ class CarController extends Controller
         $car->sopir= $request->sopir;
         $car->gaji= $request->gaji;
         $car->hargaPenyewa= $request->hargaPenyewa;
+        $car->ppn = $request->hargaPenyewa *0.1;
+        $car->pph = $car->ppn*0.2;
+        $car->totalHargaPenyewa = $request->hargaPenyewa + $car->ppn - $car->pph ;
         $car->hargaKePemilik= $request->hargaKePemilik;
+        $car->pphPemilik = $request->hargaKePemilik*0.02;
         $car->gajiDriver= $request->gajiDriver;
         $car->feePihakKe3= $request->feePihakKe3;
-        $car->save();
+        $car->feeManajemen= $car->totalHargaPenyewa - $car->hargaKePemilik - $car->gajiDriver - $car->ppn - $car->feePihakKe3;        $car->save();
 
     }
 

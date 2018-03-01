@@ -26,12 +26,12 @@ class AdminController extends Controller
 //        return $user;
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'username' => 'required|unique:users,id,'.$id,
-            'email' => 'required|string|email|max:255|unique:users,id,'.$id,
+            'username' => 'required|unique:users,username,'.$id,
+            'email' => 'required|string|email|max:255|unique:users,email,'.$id,
             'password' => 'required|string|min:6|confirmed',
         ]);
         if ($validator->fails()) {
-            return redirect('editprofile')
+            return redirect()->route('editprofile')
                 ->withErrors($validator)
                 ->withInput();
         }

@@ -27,9 +27,14 @@ class CreateCarsTable extends Migration
             $table->string('sopir')->nullable();
             $table->integer('gaji')->nullable();
             $table->integer('hargaPenyewa');
+            $table->integer('ppn');
+            $table->integer('pph');
+            $table->integer('totalHargaPenyewa');
             $table->integer('hargaKePemilik');
+            $table->integer('pphPemilik');
             $table->integer('gajiDriver')->nullable();
             $table->integer('feePihakKe3')->nullable();
+            $table->integer('feeManajemen')->nullable();
             $table->timestamps();
         });
     }

@@ -26,15 +26,6 @@
             .btn{
                 padding: 0;
             }
-            /*body {*/
-            /*font-size: 0.3em;*/
-            /*}*/
-            /*body {*/
-            /*font-size: 1em;*/
-            /*}*/
-            /*a{*/
-            /*font-size: 1em;*/
-            /*}*/
             li a{
                 font-size: 0.5em;
             }
@@ -54,12 +45,6 @@
             .last {
                 margin-right: 0;
             }
-            /*.flash-message{*/
-            /*font-size: 2em;*/
-            /*}*/
-            /*h3{*/
-            /*font-size: 0.5em;*/
-            /*}*/
         }
 
 
@@ -75,11 +60,7 @@
             z-index: 1;
             top: 0;
             left: 0;
-            /*background-color: #D9D9D9;*/
-            /*background-color: #828081;*/
             background-color: #18121e;
-            /*background-color: #111;*/
-            /*background-color: #00b8ff;*/
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
@@ -89,7 +70,6 @@
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 20px;
-            /*color: #818181;*/
             color: white;
             display: block;
             transition: 0.3s;
@@ -111,20 +91,12 @@
 
         #main {
             transition: margin-left .5s;
-
-            /*padding: 16px;*/
-            /*padding-left: 0;*/
-            /*margin-left: 0;*/
         }
 
         @media screen and (max-height: 450px) {
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
-        /*span{*/
-        /*margin: 0;*/
-        /*}*/
-
         td.child{
             width: 100%;
             padding-left: 100px;
@@ -140,15 +112,9 @@
             background-color: #4abdac;
             border-bottom:3px solid #FFFFFF;
             box-shadow : 0 1px 1px rgba(0,0,0,0.1)
-            /*background-color: #ffce00;*/
-            /*background-color: #dfdce3;*/
         }
         .table-title{
-            /*margin-top: 1em;*/
             padding-top: 2em;
-            /*background-color: #D9D9D9;*/
-            /*text-align: center;*/
-            /*margin: 0;*/
             border-top: 3px solid #0375b4;
             border-top-left-radius : 3px;
             border-top-right-radius : 3px;
@@ -156,12 +122,9 @@
             padding-bottom: 0;
             padding-left: 1em;
             font-size: 18px;
-            /*box-shadow : 0 10px 10px rgba(0,0,0,0.1);*/
             background-color: #0375b4;
             border-bottom:3px solid #FFFFFF;
             box-shadow : 0 1px 1px rgba(0,0,0,0.1)
-            /*background-color: #ffce00;*/
-            /*background-color: #dfdce3;*/
         }
 
 
@@ -176,14 +139,12 @@
             color: black;
         }
         #dataadmin{
-            /*padding: 2em;*/
             margin: 0;
             box-sizing: border-box;
             box-shadow : 0 10px 10px rgba(0,0,0,0.1);
         }
         #dataadmin_wrapper .row {
             margin-top: 0;
-            /*padding: 1em;*/
             box-sizing: border-box;
             box-shadow : 0 10px 10px rgba(0,0,0,0.1);
         }
@@ -233,9 +194,11 @@
                 {{--<li class="nav-item"><a class="nav-link pr-2" href="#">Tambah Data</a></li>--}}
                 <li class="nav-item"> <a class="nav-link pr-2" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                     document.getElementById('logout-form').submit();">
                     Logout
-                    </a> </li>
+                    </a>
+                </li>
+
             </ul>
             <div class="collapse navbar-collapse" >
                 <ul class="navbar-nav ml-auto">
