@@ -96,12 +96,12 @@
                 <th> No SPK</th>
                 <th> Periode Pemakaian Klien</th>
                 <th> Periode Pemilik Mobil</th>
-                <th> Sopir</th>
-                <th> Gaji</th>
-                <th> Harga Penyewa </th>
-                <th> Harga KePemilik</th>
-                <th> Gaji Driver</th>
-                <th> Fee Pihak Ke-3</th>
+                {{--<th> Sopir</th>--}}
+                {{--<th> Gaji</th>--}}
+                {{--<th> Harga Penyewa </th>--}}
+                {{--<th> Harga KePemilik</th>--}}
+                {{--<th> Gaji Driver</th>--}}
+                {{--<th> Fee Pihak Ke-3</th>--}}
             </tr>
             </thead>
             <tbody>
@@ -127,35 +127,35 @@
 
                         <td> {{$car->periodePemakaianKlien}}</td>
                         <td> {{$car->periodePemilikMobil}}</td>
-                        <td>
-                            @if($car->sopir==NULL)
-                                -
-                            @else
-                                Rp. {{($car->sopir)}}
-                            @endif
-                        </td>
+                        {{--<td>--}}
+                            {{--@if($car->sopir==NULL)--}}
+                                {{-----}}
+                            {{--@else--}}
+                                {{--Rp. {{($car->sopir)}}--}}
+                            {{--@endif--}}
+                        {{--</td>--}}
 
-                        <td> @if($car->gaji==0)
-                             -
-                             @else
-                                Rp. {{number_format($car->gaji)}}
-                            @endif
-                        </td>
-                        <td>Rp. {{number_format($car->hargaPenyewa)}}</td>
-                        <td>Rp. {{number_format($car->hargaKePemilik)}}</td>
-                        <td>@if($car->gajiDriver==0)
-                                -
-                            @else
-                                Rp. {{number_format($car->gajiDriver)}}
-                            @endif
-                        </td>
-                        <td>
-                            @if($car->feePihakKe3==0)
-                                -
-                            @else
-                                Rp. {{number_format($car->feePihakKe3)}}
-                            @endif
-                        </td>
+                        {{--<td> @if($car->gaji==0)--}}
+                             {{-----}}
+                             {{--@else--}}
+                                {{--Rp. {{number_format($car->gaji)}}--}}
+                            {{--@endif--}}
+                        {{--</td>--}}
+                        {{--<td>Rp. {{number_format($car->hargaPenyewa)}}</td>--}}
+                        {{--<td>Rp. {{number_format($car->hargaKePemilik)}}</td>--}}
+                        {{--<td>@if($car->gajiDriver==0)--}}
+                                {{-----}}
+                            {{--@else--}}
+                                {{--Rp. {{number_format($car->gajiDriver)}}--}}
+                            {{--@endif--}}
+                        {{--</td>--}}
+                        {{--<td>--}}
+                            {{--@if($car->feePihakKe3==0)--}}
+                                {{-----}}
+                            {{--@else--}}
+                                {{--Rp. {{number_format($car->feePihakKe3)}}--}}
+                            {{--@endif--}}
+                        {{--</td>--}}
                     </tr>
                 @endforeach
             @endif

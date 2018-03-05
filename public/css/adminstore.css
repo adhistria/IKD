@@ -33,6 +33,13 @@ body{
     .last {
         margin-right: 0;
     }
+    #datarent_wrapper .row {
+        margin-top: 0;
+        padding: 0em;
+        box-sizing: border-box;
+        box-shadow : 0 10px 10px rgba(0,0,0,0.1);
+    }
+
 }
 .sidenav {
     height: 100%;
@@ -160,7 +167,7 @@ input::-webkit-inner-spin-button {
 }
 table.dataTable>tbody>tr.child span.dtr-title{
     font-weight: bold;
-    min-width: 13rem;
+    min-width: 11rem;
     display: inline-block;
     font-family: 'Noto Serif Bold', serif;
 }

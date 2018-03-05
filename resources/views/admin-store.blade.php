@@ -148,7 +148,7 @@
                         <tr>
                             <th> No </th>
                             <th> No. Polisi</th>
-                            <th> Type Kendaraan</th>
+                            <th> Type</th>
                             <th> Nama Pemilik</th>
                             <th> Nama Penyewa</th>
                             <th> Tahun Pembuatan</th>
@@ -159,9 +159,14 @@
                             <th> Sopir</th>
                             <th> Gaji</th>
                             <th> Harga Penyewa </th>
+                            <th> PPN(10%)</th>
+                            <th> PPH(2%)</th>
+                            <th> Total Harga Penyewa</th>
                             <th> Harga KePemilik</th>
+                            <th> PPH Ke Pemilik (2%)</th>
                             <th> Gaji Driver</th>
                             <th> Fee Pihak Ke-3</th>
+                            <th> Fee Manajemen </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -173,21 +178,56 @@
                         @foreach($cars as $car)
                             <tr>
                                 <td> {{$loop->iteration}}</td>
-                                <td> {{$car->noPolisi}}</td>
-                                <td> {{$car->type}}</td>
-                                <td> {{$car->namaPemilik}}</td>
-                                <td> {{$car->namaPenyewa}}</td>
-                                <td> {{$car->thnPembuatan}}</td>
-                                <td> {{$car->thRegistrasi}}</td>
-                                <td> {{$car->noSPK}}</td>
-                                <td> {{$car->periodePemakaianKlien}}</td>
-                                <td> {{$car->periodePemilikMobil}}</td>
-                                <td> {{$car->sopir}}</td>
-                                <td>Rp. {{number_format($car->gaji)}}</td>
-                                <td>Rp. {{number_format($car->hargaPenyewa)}}</td>
-                                <td>Rp. {{number_format($car->hargaKePemilik)}}</td>
-                                <td>Rp. {{number_format($car->gajiDriver)}}</td>
-                                <td>Rp. {{number_format($car->feePihakKe3)}}</td>
+                                <td class="priority-1"> {{$car->noPolisi}}</td>
+                                <td class="priority-2"> {{$car->type}}</td>
+                                <td class="priority-3"> {{$car->namaPemilik}}</td>
+                                <td class="priority-4"> {{$car->namaPenyewa}}</td>
+                                <td class="priority-5"> {{$car->thnPembuatan}}</td>
+                                <td class="priority-6"> {{$car->thRegistrasi}}</td>
+                                <td class="priority-7">
+                                    @if(!empty($car->noSPK))
+                                        {{$car->noSPK}}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td class="priority-8"> {{$car->periodePemakaianKlien}}</td>
+                                <td class="priority-9"> {{$car->periodePemilikMobil}}</td>
+                                <td class="priority-10">
+                                    @if(!empty($car->sopir))
+                                        {{($car->sopir)}}
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                                <td class="priority-11">
+                                    @if($car->gaji==0)
+                                        -
+                                    @else
+                                        Rp. {{number_format($car->gaji)}}
+                                    @endif
+                                </td>
+                                <td class="priority-12">Rp. {{number_format($car->hargaPenyewa)}}</td>
+                                <td class="priority-16">Rp. {{number_format($car->ppn)}}</td>
+                                <td class="priority-17">Rp. {{number_format($car->pph)}}</td>
+                                <td class="priority-18">Rp. {{number_format($car->totalHargaPenyewa)}}</td>
+                                <td class="priority-13">Rp. {{number_format($car->hargaKePemilik)}}</td>
+                                <td class="priority-19">Rp. {{number_format($car->pphPemilik)}}</td>
+                                <td class="priority-14">
+                                    @if($car->gajiDriver==0)
+                                        -
+                                    @else
+                                        Rp. {{number_format($car->gajiDriver)}}
+                                    @endif
+                                </td>
+                                <td class="priority-15">
+                                    @if($car->feePihakKe3==0)
+                                        -
+                                    @else
+                                        Rp. {{ number_format($car->feePihakKe3)}}
+                                    @endif
+                                </td>
+                                <td class="priority-20">Rp. {{number_format($car->feeManajemen)}}</td>
                             </tr>
                         @endforeach
                     @endif

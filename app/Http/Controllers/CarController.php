@@ -74,7 +74,7 @@ class CarController extends Controller
         $car->gaji= $request->gaji;
         $car->hargaPenyewa= $request->hargaPenyewa;
         $car->ppn = $request->hargaPenyewa *0.1;
-        $car->pph = $car->ppn*0.2;
+        $car->pph = $car->hargaPenyewa*0.02;
         $car->totalHargaPenyewa = $request->hargaPenyewa + $car->ppn - $car->pph ;
         $car->hargaKePemilik= $request->hargaKePemilik;
         $car->pphPemilik = $request->hargaKePemilik*0.02;

@@ -102,7 +102,7 @@
                             <input class="form-control" id="periodePemakaianKlien" required name = "periodePemakaianKlien" placeholder="Periode Pemakaian Klien">
                         </div>
                         <div class="form-group">
-                            <label for="periodePemilikMobil">Nama Pemilik</label>
+                            <label for="periodePemilikMobil">Periode Pemilik Mobil</label>
                             <input name="periodePemilikMobil" class="form-control" required id="periodePemilikMobil" placeholder="Periode Pemilik Mobil">
                         </div>
                         <div class="form-group">
